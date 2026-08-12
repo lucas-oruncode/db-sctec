@@ -18,24 +18,24 @@ erDiagram
     ALUNO ||--o{ INSCRICAO_COMPETICAO : "faz (1 : N)"
 
     FAIXA {
-        int id_faixa PK
+        int id PK
         varchar(50) nome UK
         int grau
     }
 
     PROFESSOR {
-        int id_professor PK
+        int id PK
         varchar(100) nome
         char(11) cpf UK
         varchar(15) telefone
         varchar(100) email
         date data_contratacao
         int id_faixa FK
-        char(1) status
+        bit ativo
     }
 
     ALUNO {
-        int id_aluno PK
+        int id PK
         varchar(100) nome
         char(11) cpf UK
         date data_nascimento
@@ -43,70 +43,67 @@ erDiagram
         varchar(100) email
         date data_matricula
         int id_faixa FK
-        char(1) status
+        bit ativo
     }
 
     MENSALIDADE {
-        int id_mensalidade PK
+        int id PK
         int id_aluno FK
         tinyint mes_referencia
         smallint ano
         decimal(8,2) valor
         date data_vencimento
         date data_pagamento
-        char(1) status
+        bit status_pagamento
     }
 
     TURMA {
-        int id_turma PK
+        int id PK
         varchar(50) nome
-        tinyint dia_semana
         time hora_inicio
         time hora_fim
         int id_professor FK
     }
 
     EXAME {
-        int id_exame PK
+        int id PK
         int id_aluno FK
         int id_faixa_anterior FK
         int id_faixa_nova FK
         int id_professor FK
         date data_exame
-        decimal(5,2) nota
         bit aprovado
     }
 
     MATRICULA {
-        int id_matricula PK
+        int id PK
         int id_aluno FK
         int id_turma FK
         date data_matricula
     }
 
     COMPETICAO {
-        int id_competicao PK
+        int id PK
         varchar(100) nome
         date data
         varchar(100) local
     }
 
     AULA {
-        int id_aula PK
+        int id PK
         int id_turma FK
         date data
-        varchar(100) assunto
     }
 
     PRESENCA {
-        int id_presenca PK
+        int id PK
         int id_aluno FK
         int id_aula FK
         bit presente
     }
 
     INSCRICAO_COMPETICAO {
-        int id_inscricao PK
+        int id PK
         int id_competicao FK
         int id_aluno FK
         varchar(50) categoria
