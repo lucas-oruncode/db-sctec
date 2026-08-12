@@ -1,4 +1,4 @@
-# db-sctec
+# Banco de Dados SCTEC
 
 Exercícios e desafios de banco de dados SQL Server desenvolvidos durante o curso.
 
@@ -16,7 +16,6 @@ O repositório contém os scripts SQL de estudo e a modelagem da escola de jiu-j
 
 | Arquivo | Formato | Apontamento |
 | --- | --- | --- |
-| `modelo_escola_jiu_jitsu.drawio` | draw.io (editável) | Modelo entidade-relacionamento com 11 tabelas e 14 relacionamentos 1:N com rótulos, agrupadas por módulo: cadastro (azul), turmas (verde), graduação (roxo), financeiro (laranja) e competição (vermelho). Abrir em [app.diagrams.net](https://app.diagrams.net). |
 | `modelo_escola_jiu_jitsu.mmd` | Mermaid (renderizável) | Mesma modelagem em texto, com layout automático (sem linhas sobrepostas). Visualizar no [mermaid.live](https://mermaid.live/) ou no GitHub. |
 
 Tabelas do modelo: `Faixa`, `Professor`, `Aluno`, `Turma`, `Aula`, `Matricula`, `Presenca`, `Exame`, `Mensalidade`, `Competicao`, `Inscricao_Competicao`. Relacionamentos N:N são resolvidos pelas tabelas associativas `Matricula`, `Presenca` e `Inscricao_Competicao`.
@@ -130,7 +129,3 @@ erDiagram
 | Arquivo | Tema | Apontamento |
 | --- | --- | --- |
 | `desafio.sql` | Banco da escola de jiu-jitsu | Aplicar a modelagem da escola de jiu-jitsu (`modelo_escola_jiu_jitsu.drawio`/`.mmd`): criar as tabelas com chaves, `CHECK`, `DEFAULT`, `UNIQUE` e `FOREIGN KEY` conforme o planejamento. |
-
-## Como executar
-
-Abra os scripts no SQL Server Management Studio (SSMS) ou no Azure Data Studio e execute com `F5`. Para o desafio, crie as tabelas na ordem das dependências: `Faixa` -> `Professor` e `Aluno` -> `Turma` -> `Aula` -> `Matricula`, `Presenca` e `Exame` -> `Mensalidade` -> `Competicao` -> `Inscricao_Competicao`.
