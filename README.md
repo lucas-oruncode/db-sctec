@@ -1,4 +1,4 @@
-# db-sctec
+# Banco de Dados SCTEC
 
 Exercícios e desafios de banco de dados SQL Server desenvolvidos durante o curso.
 
@@ -129,7 +129,3 @@ erDiagram
 | Arquivo | Tema | Apontamento |
 | --- | --- | --- |
 | `desafio.sql` | Banco da escola de jiu-jitsu | Aplicar a modelagem da escola de jiu-jitsu (`modelo_escola_jiu_jitsu.drawio`/`.mmd`): criar as tabelas com chaves, `CHECK`, `DEFAULT`, `UNIQUE` e `FOREIGN KEY` conforme o planejamento. |
-
-## Como executar
-
-Abra os scripts no SQL Server Management Studio (SSMS) ou no Azure Data Studio e execute com `F5`. Para o desafio, crie as tabelas na ordem das dependências: `Faixa` -> `Professor` e `Aluno` -> `Turma` -> `Aula` -> `Matricula`, `Presenca` e `Exame` -> `Mensalidade` -> `Competicao` -> `Inscricao_Competicao`.
