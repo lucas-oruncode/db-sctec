@@ -1,28 +1,7 @@
-# db-sctec
-
-Exercícios e desafios de banco de dados SQL Server desenvolvidos durante o curso.
-
-## Estrutura do projeto
-
-O repositório contém os scripts SQL de estudo e a modelagem da escola de jiu-jitsu usada como base do desafio.
-
-## Exercícios
-
-| Arquivo | Tema | Apontamento |
-| --- | --- | --- |
-| `exercicio1.sql` | Fundamentos de DDL | Cria e seleciona bancos (`CREATE DATABASE`/`USE`), cria tabelas com `PRIMARY KEY`, `FOREIGN KEY` e chave composta, e usa `ALTER TABLE` para adicionar e remover colunas. |
-
-## Modelagem
-
-| Arquivo | Formato | Apontamento |
-| --- | --- | --- |
-| `modelo_escola_jiu_jitsu.drawio` | draw.io (editável) | Modelo entidade-relacionamento com 11 tabelas e 14 relacionamentos 1:N com rótulos, agrupadas por módulo: cadastro (azul), turmas (verde), graduação (roxo), financeiro (laranja) e competição (vermelho). Abrir em [app.diagrams.net](https://app.diagrams.net). |
-| `modelo_escola_jiu_jitsu.mmd` | Mermaid (renderizável) | Mesma modelagem em texto, com layout automático (sem linhas sobrepostas). Visualizar no [mermaid.live](https://mermaid.live/) ou no GitHub. |
-
-Tabelas do modelo: `Faixa`, `Professor`, `Aluno`, `Turma`, `Aula`, `Matricula`, `Presenca`, `Exame`, `Mensalidade`, `Competicao`, `Inscricao_Competicao`. Relacionamentos N:N são resolvidos pelas tabelas associativas `Matricula`, `Presenca` e `Inscricao_Competicao`.
-
-```mermaid
+%% Modelo ER - Escola de Jiu-Jitsu
+%% Abrir em https://mermaid.live/ ou visualizar no GitHub
 erDiagram
+
     FAIXA ||--o{ PROFESSOR : "possui (1 : N)"
     FAIXA ||--o{ ALUNO : "possui (1 : N)"
     FAIXA ||--o{ EXAME : "define (1 : N)"
@@ -43,6 +22,7 @@ erDiagram
         varchar(50) nome UK
         int grau
     }
+
     PROFESSOR {
         int id_professor PK
         varchar(100) nome
@@ -53,6 +33,7 @@ erDiagram
         int id_faixa FK
         char(1) status
     }
+
     ALUNO {
         int id_aluno PK
         varchar(100) nome
@@ -64,6 +45,7 @@ erDiagram
         int id_faixa FK
         char(1) status
     }
+
     MENSALIDADE {
         int id_mensalidade PK
         int id_aluno FK
@@ -74,6 +56,7 @@ erDiagram
         date data_pagamento
         char(1) status
     }
+
     TURMA {
         int id_turma PK
         varchar(50) nome
@@ -82,6 +65,7 @@ erDiagram
         time hora_fim
         int id_professor FK
     }
+
     EXAME {
         int id_exame PK
         int id_aluno FK
@@ -92,30 +76,35 @@ erDiagram
         decimal(5,2) nota
         bit aprovado
     }
+
     MATRICULA {
         int id_matricula PK
         int id_aluno FK
         int id_turma FK
         date data_matricula
     }
+
     COMPETICAO {
         int id_competicao PK
         varchar(100) nome
         date data
         varchar(100) local
     }
+
     AULA {
         int id_aula PK
         int id_turma FK
         date data
         varchar(100) assunto
     }
+
     PRESENCA {
         int id_presenca PK
         int id_aluno FK
         int id_aula FK
         bit presente
     }
+
     INSCRICAO_COMPETICAO {
         int id_inscricao PK
         int id_competicao FK
@@ -123,14 +112,4 @@ erDiagram
         varchar(50) categoria
         int colocacao
     }
-```
 
-## Desafio
-
-| Arquivo | Tema | Apontamento |
-| --- | --- | --- |
-| `desafio.sql` | Banco da escola de jiu-jitsu | Aplicar a modelagem da escola de jiu-jitsu (`modelo_escola_jiu_jitsu.drawio`/`.mmd`): criar as tabelas com chaves, `CHECK`, `DEFAULT`, `UNIQUE` e `FOREIGN KEY` conforme o planejamento. |
-
-## Como executar
-
-Abra os scripts no SQL Server Management Studio (SSMS) ou no Azure Data Studio e execute com `F5`. Para o desafio, crie as tabelas na ordem das dependências: `Faixa` -> `Professor` e `Aluno` -> `Turma` -> `Aula` -> `Matricula`, `Presenca` e `Exame` -> `Mensalidade` -> `Competicao` -> `Inscricao_Competicao`.

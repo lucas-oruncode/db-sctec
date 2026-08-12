@@ -1,0 +1,2 @@
+-- Criar as tabelas do desafio
+-- Aplicar conforme o planejamento de banco feito na semana
