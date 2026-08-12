@@ -85,14 +85,14 @@ erDiagram
     COMPETICAO {
         int id PK
         varchar(100) nome
-        date data
-        varchar(100) local
+        date data_competicao
+        varchar(100) local_competicao
     }
 
     AULA {
         int id PK
         int id_turma FK
-        date data
+        date data_aula
     }
 
     PRESENCA {

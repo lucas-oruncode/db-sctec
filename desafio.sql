@@ -73,14 +73,14 @@ CREATE TABLE matricula (
 CREATE TABLE competicao (
     id INT PRIMARY KEY IDENTITY(1,1),
     nome VARCHAR(100) NOT NULL,
-    data DATE NOT NULL,
-    local VARCHAR(100) NOT NULL
+    data_competicao DATE NOT NULL,
+    local_competicao VARCHAR(100) NOT NULL
 )
 
 CREATE TABLE aula (
     id INT PRIMARY KEY IDENTITY(1,1),
     id_turma INT FOREIGN KEY REFERENCES turma(id),
-    data DATE NOT NULL,
+    data_aula DATE NOT NULL
 )
 
 CREATE TABLE presenca (
@@ -95,5 +95,5 @@ CREATE TABLE inscricao_competicao (
     id_competicao INT FOREIGN KEY REFERENCES competicao(id),
     id_aluno INT FOREIGN KEY REFERENCES aluno(id),
     categoria VARCHAR(50) NOT NULL,
-    colocacao INT,
+    colocacao INT
 )
